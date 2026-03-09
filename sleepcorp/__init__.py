@@ -1,1 +1,1 @@
-from .sleepcorp import SleepCorp
+from .sleepcorp import setup
