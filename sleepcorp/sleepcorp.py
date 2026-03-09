@@ -17,7 +17,7 @@ class SleepCorp(commands.Cog):
         }
         self.config.register_user(**default_user)
 
-    def _parse_time(self, time_str: str) -> datetime | None:
+    def _parse_time(self, time_str: str):
         """Parse HH:MM into a datetime for today."""
         try:
             parsed = datetime.strptime(time_str, "%H:%M")
@@ -27,11 +27,7 @@ class SleepCorp(commands.Cog):
             return None
 
     @app_commands.command(name="sleep", description="Log when you went to bed.")
-    async def sleep(
-        self,
-        interaction: discord.Interaction,
-        time: str | None = None
-    ):
+    async def sleep(self, interaction: discord.Interaction, time: str = None):
         user = interaction.user
 
         if time:
@@ -55,11 +51,7 @@ class SleepCorp(commands.Cog):
         )
 
     @app_commands.command(name="awake", description="Log when you woke up.")
-    async def awake(
-        self,
-        interaction: discord.Interaction,
-        time: str | None = None
-    ):
+    async def awake(self, interaction: discord.Interaction, time: str = None):
         user = interaction.user
         data = await self.config.user(user).sleep_time()
 
@@ -83,7 +75,6 @@ class SleepCorp(commands.Cog):
         else:
             end = datetime.now()
 
-        # If wake time appears earlier than sleep time, assume it crossed midnight
         if end < start:
             end = end + timedelta(days=1)
 
@@ -116,11 +107,7 @@ class SleepCorp(commands.Cog):
         await interaction.response.send_message(report)
 
     @app_commands.command(name="bedtime", description="Check last recorded bedtime.")
-    async def bedtime(
-        self,
-        interaction: discord.Interaction,
-        user: discord.Member | discord.User | None = None
-    ):
+    async def bedtime(self, interaction: discord.Interaction, user: discord.User = None):
         target = user or interaction.user
         data = await self.config.user(target).sleep_time()
 
