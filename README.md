@@ -54,7 +54,11 @@ Coffee reserves have been authorized.
 Run the following commands in your Discord server where your Red Discord Bot is installed.
 
 [p]repo add sleepcorp https://github.com/PoutyJinx/SleepCorp
+
 [p]repo install sleepcorp sleepcorp
+
 [p]load sleepcorp
+
 [p]slash enablecog SleepCorp
+
 [p]slash sync
