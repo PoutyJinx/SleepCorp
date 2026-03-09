@@ -1,0 +1,9 @@
+{
+  "name": "sleepcorp",
+  "author": [
+    "Jinx"
+  ],
+  "short": "SIN Corporation sleep tracking.",
+  "description": "Track sleep with SIN Corp style reports.",
+  "end_user_data_statement": "Stores user sleep timestamps."
+}
